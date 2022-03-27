@@ -1,0 +1,13 @@
+#today {
+ -fx-text-fill: coral;
+}
+
+#horsMois {
+ -fx-text-fill: grey;
+}
+
+.scroll-pane {
+ -fx-background: #ddf5ee;
+ -fx-border-color: #5f9EA0;
+}
+
