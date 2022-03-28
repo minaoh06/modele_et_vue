@@ -11,9 +11,11 @@ public class VueApplication extends Application {
     public void start(Stage stage) throws Exception {
         File css = new File("css" + File.separator + "style.css");
         
-        VBoxRoot root = new VBoxRoot();
+        VBoxCalendrier root = new VBoxCalendrier();
+        root.setId("root");
 
-        Scene scene = new Scene(root, 320, 240);
+
+        Scene scene = new Scene(root, 290, 300);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();
