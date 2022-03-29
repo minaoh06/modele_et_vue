@@ -1,5 +1,6 @@
 package vue;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -44,8 +45,10 @@ public class VBoxCalendrier extends VBox
         VBox.setMargin(labelTitre, new Insets(20));
 
         //ComboBox
+
+
         ComboBox<String> annee = new ComboBox<>();
-        annee.pe
+        annee.setItems();
         for (int i = 2000; i < 2050; i++) {
 
         }
@@ -128,7 +131,7 @@ public class VBoxCalendrier extends VBox
         listMoisStack.get(0).setVisible(true);
     }
 
-    StackPane anneeMois(int annee)
+    private StackPane anneeMois(int annee)
     {
         DateCalendrier today = new DateCalendrier();
 
