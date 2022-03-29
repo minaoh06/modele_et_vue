@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.geometry.Insets;
@@ -20,7 +21,7 @@ public class VBoxCalendrier extends VBox
 {
     public VBoxCalendrier()
     {
-        /*En-tete*/
+                        /*En-tete*/
         //Button
         HBox boxButton = new HBox();
         boxButton.setAlignment(Pos.CENTER_RIGHT);
@@ -42,6 +43,12 @@ public class VBoxCalendrier extends VBox
         Label labelTitre = new Label("2022");
         VBox.setMargin(labelTitre, new Insets(20));
 
+        //ComboBox
+        ComboBox<String> annee = new ComboBox<>();
+        annee.pe
+        for (int i = 2000; i < 2050; i++) {
+
+        }
 
         //En-tête calendrier
         HBox topCal = new HBox();
@@ -50,82 +57,18 @@ public class VBoxCalendrier extends VBox
         this.getChildren().add(topCal);
 
 
-        /*Calendrier*/
+                        /*Calendrier*/
         //Date
         DateCalendrier today = new DateCalendrier();
         int anneeActu = 2022;
 
-
         //StackPane
-        StackPane moisAnne = new StackPane();
+        StackPane moisAnne = anneeMois(2022);
         List<Node> listMoisStack = moisAnne.getChildren();
-
-        //initialisation des mois
-        for(int i = 0; i <= 11; i++)
-        {
-            VBox calendrierEtLabel = new VBox(10);
-            calendrierEtLabel.setAlignment(Pos.TOP_CENTER);
-            //HBox.setMargin(calendrierEtLabel, new Insets(20));
-
-
-            //Label du mois
-            calendrierEtLabel.getChildren().add(new Label(MOIS[i]));
-            calendrierEtLabel.getChildren().get(calendrierEtLabel.getChildren().size()-1).setId("mois");
-
-            //System.out.println(MOIS[i]);
-            //Calendrier
-            CalendrierDuMois cal = new CalendrierDuMois(i+1, anneeActu);
-            GridPane date = new GridPane();
-            date.setAlignment(Pos.CENTER);
-            date.setHgap(30);
-            date.setVgap(20);
-            for(int j = 0; j < INITIAL_JOURS_SEMAINE.length; j++)
-            {
-                Label inJour = new Label(INITIAL_JOURS_SEMAINE[j]);
-                date.add(inJour, j,0,1,1);
-            }
-
-            //Ajout des dates à l'affichage
-            Collection<DateCalendrier> tabDates = cal.getDates();
-            int i1 = 0;
-            int i2 = 1;
-            for (DateCalendrier x : tabDates)
-            {
-                //label
-                Label lab = new Label("" + x.getJour());
-                VBox.setMargin(lab,new Insets(8));
-
-                //Grid Pan
-                date.add(lab, i1, i2, 1, 1);
-                if (i1 == 6)
-                {
-                    i1 = 0;
-                    i2 += 1;
-                }
-                else
-                {
-                    i1 += 1;
-                }
-
-                //ajout des Id pour le CSS
-                if (x.getMois() != i+1)
-                {
-                    date.getChildren().get(date.getChildren().size() - 1).setId("horsMois");
-                }
-                if (x.compareTo(today) == 0)
-                {
-                    date.getChildren().get(date.getChildren().size() - 1).setId("today");
-                }
-            }
-            calendrierEtLabel.setVisible(false);
-            calendrierEtLabel.setAccessibleText(MOIS[i]);
-            calendrierEtLabel.getChildren().add(date);
-            moisAnne.getChildren().add(calendrierEtLabel);
-        }
         this.getChildren().add(moisAnne);
 
 
-        /*Event*/
+                            /*Event*/
         buttonRecul.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -183,5 +126,77 @@ public class VBoxCalendrier extends VBox
 //            System.out.println(listMoisStack.get(0).getAccessibleText());
         }
         listMoisStack.get(0).setVisible(true);
+    }
+
+    StackPane anneeMois(int annee)
+    {
+        DateCalendrier today = new DateCalendrier();
+
+        //StackPane
+        StackPane moisAnne = new StackPane();
+
+        //initialisation des mois
+        for(int i = 0; i <= 11; i++)
+        {
+            VBox calendrierEtLabel = new VBox(10);
+            calendrierEtLabel.setAlignment(Pos.TOP_CENTER);
+            //HBox.setMargin(calendrierEtLabel, new Insets(20));
+
+
+            //Label du mois
+            calendrierEtLabel.getChildren().add(new Label(MOIS[i]));
+            calendrierEtLabel.getChildren().get(calendrierEtLabel.getChildren().size()-1).setId("mois");
+
+            //System.out.println(MOIS[i]);
+            //Calendrier
+            CalendrierDuMois cal = new CalendrierDuMois(i+1, annee);
+            GridPane date = new GridPane();
+            date.setAlignment(Pos.CENTER);
+            date.setHgap(30);
+            date.setVgap(20);
+            for(int j = 0; j < INITIAL_JOURS_SEMAINE.length; j++)
+            {
+                Label inJour = new Label(INITIAL_JOURS_SEMAINE[j]);
+                date.add(inJour, j,0,1,1);
+            }
+
+            //Ajout des dates à l'affichage
+            Collection<DateCalendrier> tabDates = cal.getDates();
+            int i1 = 0;
+            int i2 = 1;
+            for (DateCalendrier x : tabDates)
+            {
+                //label
+                Label lab = new Label("" + x.getJour());
+                VBox.setMargin(lab,new Insets(8));
+
+                //Grid Pan
+                date.add(lab, i1, i2, 1, 1);
+                if (i1 == 6)
+                {
+                    i1 = 0;
+                    i2 += 1;
+                }
+                else
+                {
+                    i1 += 1;
+                }
+
+                //ajout des Id pour le CSS
+                if (x.getMois() != i+1)
+                {
+                    date.getChildren().get(date.getChildren().size() - 1).setId("horsMois");
+                }
+                if (x.compareTo(today) == 0)
+                {
+                    date.getChildren().get(date.getChildren().size() - 1).setId("today");
+                }
+            }
+            calendrierEtLabel.setVisible(false);
+            calendrierEtLabel.setAccessibleText(MOIS[i]);
+            calendrierEtLabel.getChildren().add(date);
+            moisAnne.getChildren().add(calendrierEtLabel);
+        }
+        return moisAnne;
     }
 }
