@@ -45,8 +45,7 @@ public class VBoxCalendrier extends VBox
 
         //En-tête calendrier
         HBox topCal = new HBox();
-        VBox.setMargin(topCal, new Insets(10));
-        HBox.setMargin(topCal, new Insets(10));
+        VBox.setMargin(topCal, new Insets(20));
         topCal.getChildren().addAll(labelTitre, boxButton);
         this.getChildren().add(topCal);
 
@@ -61,13 +60,23 @@ public class VBoxCalendrier extends VBox
         StackPane moisAnne = new StackPane();
         List<Node> listMoisStack = moisAnne.getChildren();
 
-
         //initialisation des mois
-        for(int i = 0; i < 11; i++)
+        for(int i = 0; i <= 11; i++)
         {
+            VBox calendrierEtLabel = new VBox(10);
+            calendrierEtLabel.setAlignment(Pos.TOP_CENTER);
+            //HBox.setMargin(calendrierEtLabel, new Insets(20));
+
+
+            //Label du mois
+            calendrierEtLabel.getChildren().add(new Label(MOIS[i]));
+            calendrierEtLabel.getChildren().get(calendrierEtLabel.getChildren().size()-1).setId("mois");
+
+            //System.out.println(MOIS[i]);
             //Calendrier
-            CalendrierDuMois cal = new CalendrierDuMois(i, anneeActu);
+            CalendrierDuMois cal = new CalendrierDuMois(i+1, anneeActu);
             GridPane date = new GridPane();
+            date.setAlignment(Pos.CENTER);
             date.setHgap(30);
             date.setVgap(20);
             for(int j = 0; j < INITIAL_JOURS_SEMAINE.length; j++)
@@ -99,7 +108,7 @@ public class VBoxCalendrier extends VBox
                 }
 
                 //ajout des Id pour le CSS
-                if (x.getMois() != i)
+                if (x.getMois() != i+1)
                 {
                     date.getChildren().get(date.getChildren().size() - 1).setId("horsMois");
                 }
@@ -108,9 +117,10 @@ public class VBoxCalendrier extends VBox
                     date.getChildren().get(date.getChildren().size() - 1).setId("today");
                 }
             }
-            date.setVisible(false);
-            date.setAccessibleText(MOIS[i]);
-            moisAnne.getChildren().add(date);
+            calendrierEtLabel.setVisible(false);
+            calendrierEtLabel.setAccessibleText(MOIS[i]);
+            calendrierEtLabel.getChildren().add(date);
+            moisAnne.getChildren().add(calendrierEtLabel);
         }
         this.getChildren().add(moisAnne);
 
@@ -122,7 +132,7 @@ public class VBoxCalendrier extends VBox
                 System.out.println("Recule");
                 listMoisStack.get(0).setVisible(false);
                 listMoisStack.get(listMoisStack.size()-1).toBack();
-                System.out.println(listMoisStack.get(0).getAccessibleText());
+//                System.out.println(listMoisStack.get(0).getAccessibleText());
                 listMoisStack.get(0).setVisible(true);
             }
         });
@@ -133,7 +143,7 @@ public class VBoxCalendrier extends VBox
                 System.out.println("Avance");
                 listMoisStack.get(0).setVisible(false);
                 listMoisStack.get(0).toFront();
-                System.out.println(listMoisStack.get(0).getAccessibleText());
+//                System.out.println(listMoisStack.get(0).getAccessibleText());
                 listMoisStack.get(0).setVisible(true);
             }
         });
@@ -146,7 +156,7 @@ public class VBoxCalendrier extends VBox
                 while (listMoisStack.get(listMoisStack.size()-1).getAccessibleText().compareTo(MOIS[0]) != 0)
                 {
                     listMoisStack.get(listMoisStack.size()-1).toBack();
-                    System.out.println(listMoisStack.get(0).getAccessibleText());
+//                    System.out.println(listMoisStack.get(0).getAccessibleText());
                 }
                 listMoisStack.get(0).setVisible(true);
             }
@@ -160,17 +170,17 @@ public class VBoxCalendrier extends VBox
                 while (listMoisStack.get(0).getAccessibleText().compareTo(MOIS[11]) != 0)
                 {
                     listMoisStack.get(0).toFront();
-                    System.out.println(listMoisStack.get(0).getAccessibleText());
+//                    System.out.println(listMoisStack.get(0).getAccessibleText());
                 }
                 listMoisStack.get(0).setVisible(true);
             }
         }));
 
         //accès au mois courant
-        while (listMoisStack.get(0).getAccessibleText().compareTo(MOIS[today.getMois()]) != 0)
+        while (listMoisStack.get(0).getAccessibleText().compareTo(MOIS[today.getMois()-1]) != 0)
         {
             listMoisStack.get(0).toFront();
-            System.out.println(listMoisStack.get(0).getAccessibleText());
+//            System.out.println(listMoisStack.get(0).getAccessibleText());
         }
         listMoisStack.get(0).setVisible(true);
     }

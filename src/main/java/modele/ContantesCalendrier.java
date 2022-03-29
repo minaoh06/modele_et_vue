@@ -12,13 +12,13 @@ public interface ContantesCalendrier {
     };
 
     String [] INITIAL_JOURS_SEMAINE = {
-        "L",
-        "M",
-        "M",
-        "J",
-        "V",
-        "S",
-        "D"
+        "Lu",
+        "Ma",
+        "Me",
+        "Je",
+        "Ve",
+        "Sa",
+        "Di"
     };
 
     String [] MOIS = {

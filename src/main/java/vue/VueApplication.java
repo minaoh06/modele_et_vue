@@ -1,7 +1,9 @@
 package vue;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -13,6 +15,7 @@ public class VueApplication extends Application {
         
         VBoxCalendrier root = new VBoxCalendrier();
         root.setId("root");
+        VBox.setMargin(root, new Insets(20));
 
 
         Scene scene = new Scene(root, 290, 300);
