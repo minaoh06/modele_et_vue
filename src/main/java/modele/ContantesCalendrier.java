@@ -10,6 +10,17 @@ public interface ContantesCalendrier {
         "Samedi",
         "Dimanche"
     };
+
+    String [] INITIAL_JOURS_SEMAINE = {
+        "Lu",
+        "Ma",
+        "Me",
+        "Je",
+        "Ve",
+        "Sa",
+        "Di"
+    };
+
     String [] MOIS = {
         "Janvier",
         "Février",
