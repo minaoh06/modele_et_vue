@@ -47,11 +47,11 @@ public class VBoxCalendrier extends VBox
         //ComboBox
 
 
-        ComboBox<String> annee = new ComboBox<>();
-        annee.setItems();
-        for (int i = 2000; i < 2050; i++) {
+        //ComboBox<String> annee = new ComboBox<>();
+        //annee.setItems();
+        /*for (int i = 2000; i < 2050; i++) {
 
-        }
+        }*/
 
         //En-tête calendrier
         HBox topCal = new HBox();
@@ -99,16 +99,17 @@ public class VBoxCalendrier extends VBox
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Recule Max");
                 listMoisStack.get(0).setVisible(false);
-                while (listMoisStack.get(listMoisStack.size()-1).getAccessibleText().compareTo(MOIS[0]) != 0)
+                while (listMoisStack.get(listMoisStack.size()-1).getAccessibleText().compareTo(MOIS[11]) != 0)
                 {
                     listMoisStack.get(listMoisStack.size()-1).toBack();
-//                    System.out.println(listMoisStack.get(0).getAccessibleText());
                 }
+//                System.out.println(listMoisStack.get(0).getAccessibleText());
                 listMoisStack.get(0).setVisible(true);
             }
         });
 
-        buttonAvanceMax.setOnAction((new EventHandler<ActionEvent>() {
+        buttonAvanceMax.setOnAction((new EventHandler<ActionEvent>()
+        {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Avance Max");
@@ -116,8 +117,8 @@ public class VBoxCalendrier extends VBox
                 while (listMoisStack.get(0).getAccessibleText().compareTo(MOIS[11]) != 0)
                 {
                     listMoisStack.get(0).toFront();
-//                    System.out.println(listMoisStack.get(0).getAccessibleText());
                 }
+//                System.out.println(listMoisStack.get(11).getAccessibleText());
                 listMoisStack.get(0).setVisible(true);
             }
         }));
