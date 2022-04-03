@@ -25,15 +25,21 @@ public class VBoxCalendrier extends VBox
     {
                 /*Boutton et label*/
         //Boutton
-        HBox bouton = new HBox();
-        bouton.setAlignment(Pos.CENTER_RIGHT);
-        HBox.setHgrow(bouton, Priority.ALWAYS);
+        HBox boxBouton = new HBox();
+        boxBouton.setAlignment(Pos.CENTER_RIGHT);
+        HBox.setHgrow(boxBouton, Priority.ALWAYS);
+
+        Button reculMax = new Button("<<");
+        boxBouton.getChildren().add(reculMax);
 
         Button recul = new Button("<");
-        bouton.getChildren().add(recul);
+        boxBouton.getChildren().add(recul);
 
         Button avance = new Button(">");
-        bouton.getChildren().add(avance);
+        boxBouton.getChildren().add(avance);
+
+        Button avanceMax = new Button(">>");
+        boxBouton.getChildren().add(avanceMax);
 
         //Label
         Label labelTitre = new Label("Mars");
@@ -41,7 +47,7 @@ public class VBoxCalendrier extends VBox
         //Box top
         HBox top = new HBox();
         VBox.setMargin(labelTitre, new Insets(14));
-        top.getChildren().addAll(labelTitre, bouton);
+        top.getChildren().addAll(labelTitre, boxBouton);
         this.getChildren().add(top);
 
                     /*Calendrier*/
@@ -89,7 +95,19 @@ public class VBoxCalendrier extends VBox
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Recule");
                 listMoisStack.get(listMoisStack.size()-1).toBack();
-                labelTitre.setText(listMoisStack.get(0).getAccessibleText());
+                labelTitre.setText(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
+            }
+        });
+
+        reculMax.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Recule");
+                while(listMoisStack.get(0).getAccessibleText().compareTo(MOIS[1]) != 0)
+                {
+                listMoisStack.get(listMoisStack.size()-1).toBack();
+                }
+                labelTitre.setText(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
             }
         });
 
@@ -98,7 +116,7 @@ public class VBoxCalendrier extends VBox
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Avance");
                 listMoisStack.get(0).toFront();
-                labelTitre.setText(listMoisStack.get(0).getAccessibleText());
+                labelTitre.setText(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
             }
         });
 
@@ -106,7 +124,6 @@ public class VBoxCalendrier extends VBox
         while (listMoisStack.get(0).getAccessibleText().compareTo(MOIS[today.getMois()]) != 0)
         {
             listMoisStack.get(0).toFront();
-            //System.out.println(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
         }
     }
 }
