@@ -50,10 +50,9 @@ public class VBoxCalendrier extends VBox
         top.getChildren().addAll(labelTitre, boxBouton);
         this.getChildren().add(top);
 
+
                     /*Calendrier*/
         DateCalendrier today = new DateCalendrier();
-
-
         StackPane moisAnne = new StackPane();
 
         for (int i = 0; i <= 11; i++)
@@ -89,6 +88,7 @@ public class VBoxCalendrier extends VBox
 
         List<Node> listMoisStack = moisAnne.getChildren();
 
+
                             /*Event*/
         recul.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -102,8 +102,8 @@ public class VBoxCalendrier extends VBox
         reculMax.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("Recule");
-                while(listMoisStack.get(0).getAccessibleText().compareTo(MOIS[1]) != 0)
+                System.out.println("Recule Max");
+                while(listMoisStack.get(listMoisStack.size()-1).getAccessibleText().compareTo(MOIS[0]) != 0)
                 {
                 listMoisStack.get(listMoisStack.size()-1).toBack();
                 }
@@ -116,6 +116,18 @@ public class VBoxCalendrier extends VBox
             public void handle(ActionEvent actionEvent) {
                 System.out.println("Avance");
                 listMoisStack.get(0).toFront();
+                labelTitre.setText(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
+            }
+        });
+
+        avanceMax.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("Recule Max");
+                while(listMoisStack.get(listMoisStack.size()-1).getAccessibleText().compareTo(MOIS[11]) != 0)
+                {
+                    listMoisStack.get(0).toFront();
+                }
                 labelTitre.setText(listMoisStack.get(listMoisStack.size()-1).getAccessibleText());
             }
         });
