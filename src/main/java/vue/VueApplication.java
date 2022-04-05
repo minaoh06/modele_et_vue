@@ -18,8 +18,8 @@ public class VueApplication extends Application {
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();
-        stage.setResizable(true);
-        stage.setTitle("hello World");
+        stage.setResizable(false);
+        stage.setTitle("Calendrier");
     }
 
     public static void main(String[] args) {

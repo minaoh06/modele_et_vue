@@ -62,6 +62,7 @@ public class VBoxCalendrier extends VBox
             date.setVgap(10);
             date.setMaxWidth(270);
             date.setLayoutX(7);
+            date.setId("opaque");
             VBox.setMargin(date, new Insets(4));
 
             for (String x : JOURS_ABR)

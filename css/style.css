@@ -6,8 +6,17 @@
  -fx-background-color : white;
 }
 
+.toggle-button:hover {
+ -fx-background-color : cyan;
+}
+
+.toggle-button:selected {
+ -fx-background-color : blue;
+ -fx-text-fill: red;
+}
+
 #opaque {
- fx-background-color : white;
+ -fx-background-color : white;
 }
 
 #horsMois {
