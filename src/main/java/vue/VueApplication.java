@@ -12,13 +12,13 @@ public class VueApplication extends Application {
     public void start(Stage stage) throws Exception {
         File css = new File("css" + File.separator + "style.css");
         
-        VBoxCalendrier root = new VBoxCalendrier();
+        FormulaireReservation root = new FormulaireReservation();
 
         Scene scene = new Scene(root, 290, 340);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("Calendrier");
     }
 
