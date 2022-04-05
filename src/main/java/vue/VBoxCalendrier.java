@@ -4,19 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.geometry.Insets;
 import modele.CalendrierDuMois;
 import modele.DateCalendrier;
 
 import java.util.List;
 
+import static modele.ContantesCalendrier.JOURS_ABR;
 import static modele.ContantesCalendrier.MOIS;
 
 public class VBoxCalendrier extends VBox
@@ -25,8 +21,8 @@ public class VBoxCalendrier extends VBox
     {
                 /*Boutton et label*/
         //Boutton
-        HBox boxBouton = new HBox();
-        boxBouton.setAlignment(Pos.CENTER_RIGHT);
+        HBox boxBouton = new HBox(5);
+        boxBouton.setAlignment(Pos.CENTER_LEFT);
         HBox.setHgrow(boxBouton, Priority.ALWAYS);
 
         Button reculMax = new Button("<<");
@@ -45,29 +41,40 @@ public class VBoxCalendrier extends VBox
         Label labelTitre = new Label("Mars");
 
         //Box top
-        HBox top = new HBox();
+        HBox top = new HBox(5);
+        top.setPadding(new Insets(20));
         VBox.setMargin(labelTitre, new Insets(14));
-        top.getChildren().addAll(labelTitre, boxBouton);
-        this.getChildren().add(top);
+        top.getChildren().addAll(boxBouton, labelTitre);
 
 
                     /*Calendrier*/
         DateCalendrier today = new DateCalendrier();
         StackPane moisAnne = new StackPane();
+        ToggleGroup jours = new ToggleGroup();
 
         for (int i = 0; i <= 11; i++)
         {
             CalendrierDuMois cal = new CalendrierDuMois(i+1, 2022);
-            VBox date = new VBox();
-            ScrollPane scroll = new ScrollPane();
-            scroll.setContent(date);
-            VBox.setMargin(scroll, new Insets(4));
+            TilePane date = new TilePane();
+            date.setPrefColumns(7);
+            date.setPrefRows(cal.getDates().size() /7 + 1);
+            date.setHgap(10);
+            date.setVgap(10);
+            date.setMaxWidth(270);
+            date.setLayoutX(7);
+            VBox.setMargin(date, new Insets(4));
+
+            for (String x : JOURS_ABR)
+            {
+                date.getChildren().add(new Label(x));
+            }
 
             for (DateCalendrier x : cal.getDates())
             {
-                Label lab = new Label(x.toString());
-                VBox.setMargin(lab,new Insets(8));
-                date.getChildren().add(lab);
+                ToggleButton jour = new ToggleButton(""+x.getJour());
+                jour.setToggleGroup(jours);
+                VBox.setMargin(jour,new Insets(8));
+                date.getChildren().add(jour);
 
                 //Ajout des ID
                 if (x.getMois() != i+1)
@@ -79,12 +86,13 @@ public class VBoxCalendrier extends VBox
                     date.getChildren().get(date.getChildren().size() - 1).setId("today");
                 }
             }
-            scroll.setAccessibleText(MOIS[i]);
-            System.out.println(MOIS[i] + " " + i);
-            moisAnne.getChildren().add(scroll);
+            date.setAccessibleText(MOIS[i]);
+            moisAnne.getChildren().add(date);
 
         }
+        VBox.setMargin(moisAnne, new Insets(10));
         this.getChildren().add(moisAnne);
+        this.getChildren().add(top);
 
         List<Node> listMoisStack = moisAnne.getChildren();
 

@@ -1,6 +1,7 @@
 package vue;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,10 +14,11 @@ public class VueApplication extends Application {
         
         VBoxCalendrier root = new VBoxCalendrier();
 
-        Scene scene = new Scene(root, 320, 240);
+        Scene scene = new Scene(root, 290, 340);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(true);
         stage.setTitle("hello World");
     }
 

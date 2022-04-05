@@ -2,12 +2,15 @@
  -fx-text-fill: coral;
 }
 
-#horsMois {
- -fx-text-fill: grey;
+.toggle-button {
+ -fx-background-color : white;
 }
 
-.scroll-pane {
- -fx-background: #ddf5ee;
- -fx-border-color: #5f9EA0;
+#opaque {
+ fx-background-color : white;
+}
+
+#horsMois {
+ -fx-text-fill: grey;
 }
 
