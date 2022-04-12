@@ -11,7 +11,7 @@ public class VueApplication extends Application {
     public void start(Stage stage) throws Exception {
         File css = new File("css" + File.separator + "style.css");
         
-        FormulaireReservation root = new FormulaireReservation();
+        HBoxRoot root = new HBoxRoot();
 
         Scene scene = new Scene(root, 400, 400);
         scene.getStylesheets().add(css.toURI().toString());

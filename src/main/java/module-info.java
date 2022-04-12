@@ -6,6 +6,7 @@ module com.example.modele_et_vue {
 
     opens com.example.modele_et_vue to javafx.fxml;
     exports com.example.modele_et_vue;
+    exports controleur;
     exports modele;
     exports vue;
 }

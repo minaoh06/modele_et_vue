@@ -86,6 +86,8 @@ public class VBoxCalendrier extends VBox
                 {
                     date.getChildren().get(date.getChildren().size() - 1).setId("today");
                 }
+                jour.setUserData(x);
+                jour.setOnAction(HBoxRoot.getControleur());
             }
             date.setAccessibleText(MOIS[i]);
             moisAnne.getChildren().add(date);
