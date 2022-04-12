@@ -1,7 +1,6 @@
 package vue;
 
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -14,7 +13,7 @@ public class VueApplication extends Application {
         
         FormulaireReservation root = new FormulaireReservation();
 
-        Scene scene = new Scene(root, 290, 340);
+        Scene scene = new Scene(root, 400, 400);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();
