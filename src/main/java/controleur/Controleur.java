@@ -33,6 +33,7 @@ public class Controleur implements EventHandler
                             new Horaire(reservationPane.getHeure2().getValue(), reservationPane.getMinute2().getValue())
                             )
             ));
+            System.out.println("lol");
         }
     }
 }

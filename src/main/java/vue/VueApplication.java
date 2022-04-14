@@ -13,7 +13,7 @@ public class VueApplication extends Application {
         
         HBoxRoot root = new HBoxRoot();
 
-        Scene scene = new Scene(root, 400, 400);
+        Scene scene = new Scene(root, 600, 400);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();

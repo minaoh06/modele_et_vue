@@ -13,12 +13,16 @@ public class FormulaireReservation extends GridPane {
 
     TextField textFieldCours;
 
-    public ComboBox<Integer> heure1;
-    public ComboBox<Integer> heure2;
+    private ComboBox<Integer> heure1;
+    private ComboBox<Integer> heure2;
 
-    public ComboBox<Integer> minute1;
-    public ComboBox<Integer> minute2;
+    private ComboBox<Integer> minute1;
+    private ComboBox<Integer> minute2;
 
+    private RadioButton debutant;
+    private RadioButton moyen;
+    private RadioButton avance;
+    private RadioButton expert;
 
     public FormulaireReservation(){
         setVgap(20);
@@ -49,23 +53,22 @@ public class FormulaireReservation extends GridPane {
         niveau.setMnemonicParsing(true);
         add(niveau, 0,3,1,1);
 
-        RadioButton debutant = new RadioButton("_Débutant");
+        debutant = new RadioButton("_Débutant");
         debutant.setMnemonicParsing(true);
         debutant.setToggleGroup(groupNiveau);
-        debutant.setSelected(true);
         add(debutant, 1,3,2,1);
 
-        RadioButton moyen = new RadioButton("_Moyen");
+        moyen = new RadioButton("_Moyen");
         moyen.setMnemonicParsing(true);
         moyen.setToggleGroup(groupNiveau);
         add(moyen, 3,3,2,1);
 
-        RadioButton avance = new RadioButton("_Avancé");
+        avance = new RadioButton("_Avancé");
         avance.setMnemonicParsing(true);
         avance.setToggleGroup(groupNiveau);
         add(avance, 1,4,2,1);
 
-        RadioButton expert = new RadioButton("_Expert");
+        expert = new RadioButton("_Expert");
         expert.setMnemonicParsing(true);
         expert.setToggleGroup(groupNiveau);
         add(expert, 3,4,2,1);
@@ -86,8 +89,6 @@ public class FormulaireReservation extends GridPane {
             heure1.getItems().add(i);
             heure2.getItems().add(i);
         }
-        heure1.getSelectionModel().select(7);
-        heure2.getSelectionModel().select(8);
 
         minute1 = new ComboBox<Integer>();
         minute2 = new ComboBox<Integer>();
@@ -96,8 +97,6 @@ public class FormulaireReservation extends GridPane {
             minute1.getItems().add(i);
             minute2.getItems().add(i);
         }
-        minute1.getSelectionModel().select(0);
-        minute2.getSelectionModel().select(0);
 
         add(heure1, 2,5,1,1);
         add(heure2, 2,6,1,1);
@@ -110,19 +109,27 @@ public class FormulaireReservation extends GridPane {
         add(annuler, 3,8,1,1);
         Button save = new Button("Enregistrer");
         add(save, 4,8,1,1);
+        reset();
 
         //Event
         annuler.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                textFieldCours.setText("");
-                debutant.setSelected(true);
-                heure1.getSelectionModel().select(7);
-                heure2.getSelectionModel().select(8);
-                minute1.getSelectionModel().select(0);
-                minute2.getSelectionModel().select(0);
+                reset();
             }
         });
+
+        save.setOnAction(HBoxRoot.getControleur());
+    }
+
+    public void reset()
+    {
+        textFieldCours.setText("");
+        debutant.setSelected(true);
+        heure1.getSelectionModel().select(7);
+        heure2.getSelectionModel().select(8);
+        minute1.getSelectionModel().select(0);
+        minute2.getSelectionModel().select(0);
     }
 
     public Label getTitre()

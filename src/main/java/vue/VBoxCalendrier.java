@@ -61,6 +61,7 @@ public class VBoxCalendrier extends VBox
             date.setHgap(10);
             date.setVgap(10);
             date.setMaxWidth(270);
+            date.setMinWidth(270);
             date.setLayoutX(7);
             date.setId("opaque");
             VBox.setMargin(date, new Insets(4));
@@ -80,11 +81,12 @@ public class VBoxCalendrier extends VBox
                 //Ajout des ID
                 if (x.getMois() != i+1)
                 {
-                    date.getChildren().get(date.getChildren().size() - 1).setId("horsMois");
+                    jour.setId("horsMois");
                 }
                 if (x.compareTo(today) == 0)
                 {
-                    date.getChildren().get(date.getChildren().size() - 1).setId("today");
+                    jour.setId("today");
+                    jour.setSelected(true);
                 }
                 jour.setUserData(x);
                 jour.setOnAction(HBoxRoot.getControleur());
