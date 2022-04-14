@@ -9,7 +9,16 @@ import modele.DateCalendrier;
 
 public class FormulaireReservation extends GridPane {
 
-    Label titre = new Label();
+    public Label titre;
+
+    TextField textFieldCours;
+
+    public ComboBox<Integer> heure1;
+    public ComboBox<Integer> heure2;
+
+    public ComboBox<Integer> minute1;
+    public ComboBox<Integer> minute2;
+
 
     public FormulaireReservation(){
         setVgap(20);
@@ -18,6 +27,7 @@ public class FormulaireReservation extends GridPane {
         //Titre
         DateCalendrier today = new DateCalendrier();
         titre = new Label(""+today.toString());
+        titre.setUserData(today);
         add(titre, 3, 0, 1, 1);
         titre.setAlignment(Pos.TOP_CENTER);
 
@@ -25,7 +35,7 @@ public class FormulaireReservation extends GridPane {
 
         //Partie cours
         Label cours = new Label("_Cours");
-        TextField textFieldCours = new TextField();
+        textFieldCours = new TextField();
 
         cours.setLabelFor(textFieldCours);
         cours.setMnemonicParsing(true);
@@ -69,8 +79,8 @@ public class FormulaireReservation extends GridPane {
         add(new Label("h"), 3,5,1,1);
         add(new Label("h"), 3,6,1,1);
 
-        ComboBox<Integer> heure1 = new ComboBox<Integer>();
-        ComboBox<Integer> heure2 = new ComboBox<Integer>();
+        heure1 = new ComboBox<Integer>();
+        heure2 = new ComboBox<Integer>();
         for (int i = 0; i < 23; i++)
         {
             heure1.getItems().add(i);
@@ -79,8 +89,8 @@ public class FormulaireReservation extends GridPane {
         heure1.getSelectionModel().select(7);
         heure2.getSelectionModel().select(8);
 
-        ComboBox<Integer> minute1 = new ComboBox<Integer>();
-        ComboBox<Integer> minute2 = new ComboBox<Integer>();
+        minute1 = new ComboBox<Integer>();
+        minute2 = new ComboBox<Integer>();
         for (int i = 0; i <= 60; i+=15)
         {
             minute1.getItems().add(i);
@@ -115,7 +125,32 @@ public class FormulaireReservation extends GridPane {
         });
     }
 
-    public Label getTitre() {
+    public Label getTitre()
+    {
         return titre;
     }
+
+    public TextField getTextFieldCours()
+    {
+        return textFieldCours;
+    }
+
+    public ComboBox<Integer> getHeure1()
+    {
+        return heure1;
+    }
+
+    public ComboBox<Integer> getHeure2()
+    {
+        return heure2;
+    }
+    public ComboBox<Integer> getMinute1()
+    {
+        return minute1;
+    }
+    public ComboBox<Integer> getMinute2()
+    {
+        return minute2;
+    }
+
 }
