@@ -9,20 +9,20 @@ import modele.DateCalendrier;
 
 public class FormulaireReservation extends GridPane {
 
-    public Label titre;
+    private final Label titre;
 
-    TextField textFieldCours;
+    private final TextField textFieldCours;
 
-    private ComboBox<Integer> heure1;
-    private ComboBox<Integer> heure2;
+    private final ComboBox<Integer> heure1;
+    private final ComboBox<Integer> heure2;
 
-    private ComboBox<Integer> minute1;
-    private ComboBox<Integer> minute2;
+    private final ComboBox<Integer> minute1;
+    private final ComboBox<Integer> minute2;
 
-    private RadioButton debutant;
-    private RadioButton moyen;
-    private RadioButton avance;
-    private RadioButton expert;
+    private final RadioButton debutant;
+    private final RadioButton moyen;
+    private final RadioButton expert;
+    private final RadioButton avance;
 
     public FormulaireReservation(){
         setVgap(20);
@@ -106,7 +106,8 @@ public class FormulaireReservation extends GridPane {
         add(new Separator(), 0,7,5,1);
 
         Button annuler = new Button("Annuler");
-        add(annuler, 2,8,1,1);
+        add(annuler, 2,8,2,1);
+        annuler.setAlignment(Pos.CENTER_RIGHT);
         Button save = new Button("Enregistrer");
         add(save, 4,8,1,1);
         reset();
@@ -135,6 +136,10 @@ public class FormulaireReservation extends GridPane {
     public Label getTitre()
     {
         return titre;
+    }
+
+    public void setTitre(String textTitre) {
+        this.titre.setText(textTitre);
     }
 
     public TextField getTextFieldCours()

@@ -18,7 +18,7 @@ public class Controleur implements EventHandler
         if (event.getSource() instanceof ToggleButton)
         {
             System.out.println(((ToggleButton) event.getSource()).getUserData());
-            reservationPane.getTitre().setText(((ToggleButton) event.getSource()).getUserData().toString());
+            reservationPane.setTitre(((ToggleButton) event.getSource()).getUserData().toString());
             reservationPane.getTitre().setUserData(((ToggleButton) event.getSource()).getUserData());
         }
 
@@ -35,6 +35,7 @@ public class Controleur implements EventHandler
             if(planning.ajout(reserve))
             {
                 System.out.println(planning.toString());
+                HBoxRoot.getAffichagePlannig().setText(planning.toString());
             }
             else
             {

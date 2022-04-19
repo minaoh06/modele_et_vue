@@ -12,15 +12,18 @@ public class HBoxRoot extends HBox
     public static Controleur controleur;
     public static FormulaireReservation reservationPane;
     public static VBoxCalendrier calendrierPane;
+    public static TextPlaning affichagePlannig;
 
-    public HBoxRoot()
+    public HBoxRoot(int gap)
     {
+        super(gap);
         planning = new Planning();
         controleur = new Controleur();
         reservationPane = new FormulaireReservation();
         calendrierPane = new VBoxCalendrier();
+        affichagePlannig = new TextPlaning();
 
-        getChildren().addAll(calendrierPane, reservationPane);
+        getChildren().addAll(calendrierPane, reservationPane, affichagePlannig);
     }
 
     public static EventHandler<ActionEvent> getControleur() {
@@ -42,4 +45,7 @@ public class HBoxRoot extends HBox
         return calendrierPane;
     }
 
+    public static TextPlaning getAffichagePlannig() {
+        return affichagePlannig;
+    }
 }

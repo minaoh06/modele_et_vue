@@ -11,9 +11,9 @@ public class VueApplication extends Application {
     public void start(Stage stage) throws Exception {
         File css = new File("css" + File.separator + "style.css");
         
-        HBoxRoot root = new HBoxRoot();
+        HBoxRoot root = new HBoxRoot(10);
 
-        Scene scene = new Scene(root, 510, 330);
+        Scene scene = new Scene(root, 790, 330);
         scene.getStylesheets().add(css.toURI().toString());
         stage.setScene(scene);
         stage.show();

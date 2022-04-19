@@ -47,6 +47,10 @@ public class Planning {
     }
 
     public String toString() {
-        return "treeMap " + chTreeMapReservations.size() + " - "+ chTreeMapReservations + "\n" ;
+        for (Reservation reservation : chTreeMapReservations)
+        {
+
+        }
+        return "treeMap " + chTreeMapReservations.size() + "\n" ;
     }
 }
