@@ -25,15 +25,21 @@ public class Controleur implements EventHandler
         // la source de event est le bouton "Enregistrer"
         if (event.getSource() instanceof Button)
         {
-            planning.ajout(new Reservation(
+            Reservation reserve = new Reservation(
                     reservationPane.getTextFieldCours().getText(),
                     ((Date) reservationPane.getTitre().getUserData()),
                     new PlageHoraire(
                             new Horaire(reservationPane.getHeure1().getValue(), reservationPane.getMinute1().getValue()),
                             new Horaire(reservationPane.getHeure2().getValue(), reservationPane.getMinute2().getValue())
-                            )
-            ));
-            System.out.println("lol");
+                    ));
+            if(planning.ajout(reserve))
+            {
+                System.out.println(planning.toString());
+            }
+            else
+            {
+                System.out.println("Erreur");
+            }
         }
     }
 }

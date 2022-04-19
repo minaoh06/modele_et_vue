@@ -18,6 +18,10 @@ public class Planning {
      *
      */
     public boolean ajout (Reservation parReservation)   {
+        if(!parReservation.estValide())
+        {
+            return false;
+        }
 
         int numSemaine = ((DateCalendrier)parReservation.getDate()).getWeekOfYear();
         Set<Reservation> set = chTreeMapReservations.get(numSemaine);

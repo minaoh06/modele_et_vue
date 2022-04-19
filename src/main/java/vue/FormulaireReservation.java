@@ -32,7 +32,7 @@ public class FormulaireReservation extends GridPane {
         DateCalendrier today = new DateCalendrier();
         titre = new Label(""+today.toString());
         titre.setUserData(today);
-        add(titre, 3, 0, 1, 1);
+        add(titre, 2, 0, 3, 1);
         titre.setAlignment(Pos.TOP_CENTER);
 
         add(new Separator(), 0,1,5,1);
@@ -61,7 +61,7 @@ public class FormulaireReservation extends GridPane {
         moyen = new RadioButton("_Moyen");
         moyen.setMnemonicParsing(true);
         moyen.setToggleGroup(groupNiveau);
-        add(moyen, 3,3,2,1);
+        add(moyen, 4,3,2,1);
 
         avance = new RadioButton("_Avancé");
         avance.setMnemonicParsing(true);
@@ -71,7 +71,7 @@ public class FormulaireReservation extends GridPane {
         expert = new RadioButton("_Expert");
         expert.setMnemonicParsing(true);
         expert.setToggleGroup(groupNiveau);
-        add(expert, 3,4,2,1);
+        add(expert, 4,4,2,1);
 
         //Partie horaire
         Label horaire = new Label("_Horaire");
@@ -84,7 +84,7 @@ public class FormulaireReservation extends GridPane {
 
         heure1 = new ComboBox<Integer>();
         heure2 = new ComboBox<Integer>();
-        for (int i = 0; i < 23; i++)
+        for (int i = 1; i <= 23; i++)
         {
             heure1.getItems().add(i);
             heure2.getItems().add(i);
@@ -92,7 +92,7 @@ public class FormulaireReservation extends GridPane {
 
         minute1 = new ComboBox<Integer>();
         minute2 = new ComboBox<Integer>();
-        for (int i = 0; i <= 60; i+=15)
+        for (int i = 0; i < 60; i+=15)
         {
             minute1.getItems().add(i);
             minute2.getItems().add(i);
@@ -106,7 +106,7 @@ public class FormulaireReservation extends GridPane {
         add(new Separator(), 0,7,5,1);
 
         Button annuler = new Button("Annuler");
-        add(annuler, 3,8,1,1);
+        add(annuler, 2,8,1,1);
         Button save = new Button("Enregistrer");
         add(save, 4,8,1,1);
         reset();
