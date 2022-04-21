@@ -3,6 +3,7 @@ package vue;
 import controleur.Controleur;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import modele.Planning;
 
@@ -12,7 +13,7 @@ public class HBoxRoot extends HBox
     public static Controleur controleur;
     public static FormulaireReservation reservationPane;
     public static VBoxCalendrier calendrierPane;
-    public static TextPlaning affichagePlannig;
+    public static TextArea affichagePlannig;
 
     public HBoxRoot(int gap)
     {
@@ -21,7 +22,10 @@ public class HBoxRoot extends HBox
         controleur = new Controleur();
         reservationPane = new FormulaireReservation();
         calendrierPane = new VBoxCalendrier();
-        affichagePlannig = new TextPlaning();
+        affichagePlannig = new TextArea();
+        affichagePlannig.setMaxSize(255, 330);
+        affichagePlannig.setEditable(false);
+        affichagePlannig.setWrapText(true);
 
         getChildren().addAll(calendrierPane, reservationPane, affichagePlannig);
     }
@@ -45,7 +49,7 @@ public class HBoxRoot extends HBox
         return calendrierPane;
     }
 
-    public static TextPlaning getAffichagePlannig() {
+    public static TextArea getAffichagePlannig() {
         return affichagePlannig;
     }
 }

@@ -47,10 +47,15 @@ public class Planning {
     }
 
     public String toString() {
-        for (Reservation reservation : chTreeMapReservations)
+        String retour = new String("");
+        for (int i :chTreeMapReservations.keySet())
         {
-
+            for (Reservation res : chTreeMapReservations.get(i))
+            {
+                retour += res.toString() + "\n";
+            }
         }
-        return "treeMap " + chTreeMapReservations.size() + "\n" ;
+        retour += "treeMap " + chTreeMapReservations.size() + "\n" ;
+        return retour;
     }
 }
