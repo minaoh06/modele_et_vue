@@ -46,16 +46,15 @@ public class Planning {
         return  chTreeMapReservations.get(parWeekOfYear);
     }
 
-    public String toString() {
+    public String affichageSemaine(int semaine) {
         String retour = new String("");
-        for (int i :chTreeMapReservations.keySet())
+        for (Reservation res : chTreeMapReservations.get(semaine))
         {
-            for (Reservation res : chTreeMapReservations.get(i))
-            {
-                retour += res.toString() + "\n";
-            }
+            retour += res.getIntitule() + "\n";
+            retour += res.getDate().toString() + "\n";
+            retour += res.getDificulte() + "\n";
+            retour += res.getPlageHoraire().toString() + "\n\n";
         }
-        retour += "treeMap " + chTreeMapReservations.size() + "\n" ;
         return retour;
     }
 }

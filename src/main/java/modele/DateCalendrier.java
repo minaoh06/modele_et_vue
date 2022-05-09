@@ -64,4 +64,9 @@ public class DateCalendrier extends Date implements Comparable <Date> ,Contantes
         Date dateVeille =  super.dateDeLaVeille();
         return new DateCalendrier (dateVeille.chJour,dateVeille.chMois,dateVeille.chAnnee);
     }
+
+    public static DateCalendrier dateToDateCalendrier(Date date)
+    {
+        return new DateCalendrier(date.chJour, date.chMois, date.chAnnee);
+    }
 }

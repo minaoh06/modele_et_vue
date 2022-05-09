@@ -31,11 +31,14 @@ public class Controleur implements EventHandler
                     new PlageHoraire(
                             new Horaire(reservationPane.getHeure1().getValue(), reservationPane.getMinute1().getValue()),
                             new Horaire(reservationPane.getHeure2().getValue(), reservationPane.getMinute2().getValue())
-                    ));
+                    ),
+                    reservationPane.getDificulte()
+            );
             if(planning.ajout(reserve))
             {
                 System.out.println(planning.toString());
-                HBoxRoot.getAffichagePlannig().setText(planning.toString());
+                DateCalendrier date = DateCalendrier.dateToDateCalendrier((Date) reservationPane.getTitre().getUserData());
+                HBoxRoot.getAffichagePlannig().setText(planning.affichageSemaine(date.getWeekOfYear()));
             }
             else
             {

@@ -56,21 +56,25 @@ public class FormulaireReservation extends GridPane {
         debutant = new RadioButton("_Débutant");
         debutant.setMnemonicParsing(true);
         debutant.setToggleGroup(groupNiveau);
+        debutant.setAccessibleText("Débutant");
         add(debutant, 1,3,2,1);
 
         moyen = new RadioButton("_Moyen");
         moyen.setMnemonicParsing(true);
         moyen.setToggleGroup(groupNiveau);
+        moyen.setAccessibleText("Moyen");
         add(moyen, 4,3,2,1);
 
         avance = new RadioButton("_Avancé");
         avance.setMnemonicParsing(true);
         avance.setToggleGroup(groupNiveau);
+        avance.setAccessibleText("Avancé");
         add(avance, 1,4,2,1);
 
         expert = new RadioButton("_Expert");
         expert.setMnemonicParsing(true);
         expert.setToggleGroup(groupNiveau);
+        expert.setAccessibleText("Expert");
         add(expert, 4,4,2,1);
 
         //Partie horaire
@@ -163,6 +167,18 @@ public class FormulaireReservation extends GridPane {
     public ComboBox<Integer> getMinute2()
     {
         return minute2;
+    }
+
+    public String getDificulte()
+    {
+        if (debutant.isSelected())
+            return debutant.getAccessibleText();
+        else if (moyen.isSelected())
+            return moyen.getAccessibleText();
+        else if (avance.isSelected())
+            return avance.getAccessibleText();
+        else
+            return expert.getAccessibleText();
     }
 
 }

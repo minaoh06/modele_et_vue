@@ -9,11 +9,12 @@ import modele.Planning;
 
 public class HBoxRoot extends HBox
 {
-    public static Planning planning;
-    public static Controleur controleur;
-    public static FormulaireReservation reservationPane;
-    public static VBoxCalendrier calendrierPane;
-    public static TextArea affichagePlannig;
+    private static Planning planning;
+    private static Controleur controleur;
+    private static FormulaireReservation reservationPane;
+    private static VBoxCalendrier calendrierPane;
+    private static DateArea affichagePlannig;
+
 
     public HBoxRoot(int gap)
     {
@@ -22,10 +23,8 @@ public class HBoxRoot extends HBox
         controleur = new Controleur();
         reservationPane = new FormulaireReservation();
         calendrierPane = new VBoxCalendrier();
-        affichagePlannig = new TextArea();
-        affichagePlannig.setMaxSize(255, 330);
-        affichagePlannig.setEditable(false);
-        affichagePlannig.setWrapText(true);
+        affichagePlannig = new DateArea();
+
 
         getChildren().addAll(calendrierPane, reservationPane, affichagePlannig);
     }
@@ -50,6 +49,6 @@ public class HBoxRoot extends HBox
     }
 
     public static TextArea getAffichagePlannig() {
-        return affichagePlannig;
+        return affichagePlannig.getAreaPlanning();
     }
 }
