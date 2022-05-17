@@ -23,3 +23,6 @@
  -fx-text-fill: grey;
 }
 
+#back {
+ -fx-background-color : white;
+}
