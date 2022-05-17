@@ -7,8 +7,8 @@ import modele.DateCalendrier;
 
 public class DateArea extends VBox
 {
-    private static TextArea areaPlanning;
-    private static Label semaine;
+    private TextArea areaPlanning;
+    private Label semaine;
 
     public DateArea()
     {

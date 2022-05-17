@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import modele.*;
+import vue.DateArea;
 import vue.FormulaireReservation;
 import vue.HBoxRoot;
 
@@ -13,13 +14,16 @@ public class Controleur implements EventHandler
     public void handle(Event event) {
         Planning planning = HBoxRoot.getPlanning();
         FormulaireReservation reservationPane = HBoxRoot.getReservationPane();
+        DateArea affichePln = HBoxRoot.getAffichagePlannig();
 
         // la source de event est une date du calendrier du formulaire de réservation
-        if (event.getSource() instanceof ToggleButton)
-        {
+        if (event.getSource() instanceof ToggleButton) {
             System.out.println(((ToggleButton) event.getSource()).getUserData());
             reservationPane.setTitre(((ToggleButton) event.getSource()).getUserData().toString());
             reservationPane.getTitre().setUserData(((ToggleButton) event.getSource()).getUserData());
+            DateCalendrier date = DateCalendrier.dateToDateCalendrier((Date) reservationPane.getTitre().getUserData());
+            affichePln.setSemaine(date.getWeekOfYear());
+            affichePln.getAreaPlanning().setText(planning.affichageSemaine(date.getWeekOfYear()));
         }
 
         // la source de event est le bouton "Enregistrer"
@@ -36,9 +40,8 @@ public class Controleur implements EventHandler
             );
             if(planning.ajout(reserve))
             {
-                System.out.println(planning.toString());
                 DateCalendrier date = DateCalendrier.dateToDateCalendrier((Date) reservationPane.getTitre().getUserData());
-                HBoxRoot.getAffichagePlannig().setText(planning.affichageSemaine(date.getWeekOfYear()));
+                affichePln.getAreaPlanning().setText(planning.affichageSemaine(date.getWeekOfYear()));
             }
             else
             {

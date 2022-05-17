@@ -15,7 +15,6 @@ public class HBoxRoot extends HBox
     private static VBoxCalendrier calendrierPane;
     private static DateArea affichagePlannig;
 
-
     public HBoxRoot(int gap)
     {
         super(gap);
@@ -48,7 +47,7 @@ public class HBoxRoot extends HBox
         return calendrierPane;
     }
 
-    public static TextArea getAffichagePlannig() {
-        return affichagePlannig.getAreaPlanning();
+    public static DateArea getAffichagePlannig() {
+        return affichagePlannig;
     }
 }

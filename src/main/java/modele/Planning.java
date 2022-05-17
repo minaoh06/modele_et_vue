@@ -48,12 +48,19 @@ public class Planning {
 
     public String affichageSemaine(int semaine) {
         String retour = new String("");
-        for (Reservation res : chTreeMapReservations.get(semaine))
+        if (chTreeMapReservations.containsKey(semaine))
         {
-            retour += res.getIntitule() + "\n";
-            retour += res.getDate().toString() + "\n";
-            retour += res.getDificulte() + "\n";
-            retour += res.getPlageHoraire().toString() + "\n\n";
+            for (Reservation res : chTreeMapReservations.get(semaine))
+            {
+                retour += res.getIntitule() + "\n";
+                retour += res.getDate().toString() + "\n";
+                retour += res.getDificulte() + "\n";
+                retour += res.getPlageHoraire().toString() + "\n\n";
+            }
+        }
+        else
+        {
+            retour = "";
         }
         return retour;
     }
