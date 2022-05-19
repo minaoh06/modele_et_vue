@@ -1,4 +1,4 @@
-package modele;
+package vue;
 
 public interface Menu {
     String [] ITEMS_MENU_PLANNING = {
