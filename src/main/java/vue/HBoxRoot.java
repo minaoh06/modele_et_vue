@@ -11,10 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import modele.Planning;
 
-import static modele.ContantesCalendrier.MOIS;
 
-
-public class HBoxRoot extends HBox implements modele.Menu
+public class HBoxRoot extends HBox implements InterfaceMenu
 {
     private static Planning planning;
     private static Controleur controleur;
@@ -41,6 +39,12 @@ public class HBoxRoot extends HBox implements modele.Menu
         compenents[0] = calendrierPane;
         compenents[1] = reservationPane;
         compenents[2] = affichagePlannig;
+
+        for (int i = 0; i < ITEMS_MENU_PLANNING.length; i++)
+        {
+            compenents[i].setAccessibleText(ITEMS_MENU_PLANNING[i]);
+        }
+
         calendrierPane.setId("back");
         reservationPane.setId("back");
         affichagePlannig.setId("back");
@@ -55,11 +59,12 @@ public class HBoxRoot extends HBox implements modele.Menu
         for (int i = 0; i < ITEMS_MENU_PLANNING.length; i++) {
             MenuItem menuItem = new MenuItem(ITEMS_MENU_PLANNING[i]);
             menuItem.setUserData(i);
+            System.out.println(menuItem.getUserData());
             menuItem.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     int data = (int)((MenuItem)actionEvent.getSource()).getUserData();
-                    while ((stackPane.getChildren().get(0).getUserData()).equals(data))
+                    while (stackPane.getChildren().get(0).getAccessibleText().compareTo(ITEMS_MENU_PLANNING[data]) != 0)
                     {
                         stackPane.getChildren().get(0).toFront();
                     }

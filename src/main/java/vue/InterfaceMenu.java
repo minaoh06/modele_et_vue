@@ -1,6 +1,6 @@
 package vue;
 
-public interface Menu {
+public interface InterfaceMenu {
     String [] ITEMS_MENU_PLANNING = {
             "Calendrier",
             "Réservation",
